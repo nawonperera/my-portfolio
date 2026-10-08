@@ -77,7 +77,7 @@ function App() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 0.5 }}
-              onClick={handleWebShoot}
+              onClick={('ontouchstart' in window) ? undefined : handleWebShoot}
             >
               {/* Interactive particle web background */}
               <WebBackground />

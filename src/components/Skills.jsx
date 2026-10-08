@@ -97,8 +97,8 @@ const Skills = () => {
           className="text-left mb-10"
         >
           <h2 className="font-bold text-4xl md:text-6xl mt-4 tracking-tighter uppercase">
-            <span className="text-spidey-light text-2xl md:text-4xl block mb-2 font-normal">[ CORE ]</span>
-            <span className="gradient-text text-6xl md:text-8xl">EXPERTISE</span>
+            <span className="text-spidey-light text-lg md:text-4xl block mb-2 font-normal">[ CORE ]</span>
+            <span className="gradient-text text-4xl md:text-8xl">EXPERTISE</span>
           </h2>
           
         </motion.div>
@@ -110,20 +110,20 @@ const Skills = () => {
               initial={{ opacity: 0, y: 30 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.4, delay: catIndex * 0.05 }}
-              className="glass rounded-2xl p-6 border-2 border-transparent hover:border-spidey-red/50 transition-all group"
+              className="glass rounded-2xl p-4 md:p-6 border-2 border-transparent hover:border-spidey-red/50 transition-all group"
               whileHover={{ scale: 1.02 }}
             >
-              <div className="flex items-center gap-4 mb-8">
+              <div className="flex items-center gap-3 md:gap-4 mb-4 md:mb-8">
                 <motion.span 
-                  className="text-4xl shrink-0"
+                  className="text-2xl md:text-4xl shrink-0"
                   animate={{ rotate: [0, 10, -10, 0] }}
                   transition={{ duration: 2, repeat: Infinity }}
                 >
                   {category.icon}
                 </motion.span>
                 <div>
-                  <h3 className="font-bold text-2xl text-spidey-light tracking-tight">{category.title}</h3>
-                  <p className="text-sm text-gray-400">{category.subtitle}</p>
+                  <h3 className="font-bold text-lg md:text-2xl text-spidey-light tracking-tight">{category.title}</h3>
+                  <p className="text-xs md:text-sm text-gray-400">{category.subtitle}</p>
                 </div>
               </div>
 
@@ -134,11 +134,11 @@ const Skills = () => {
                     initial={{ opacity: 0, x: -20 }}
                     animate={inView ? { opacity: 1, x: 0 } : {}}
                     transition={{ duration: 0.3, delay: 0.1 + catIndex * 0.05 + skillIndex * 0.03 }}
-                    className="flex items-center gap-3 p-3 rounded-xl bg-spidey-darkBlue/40 border border-spidey-red/10 hover:border-spidey-red/40 hover:bg-spidey-darkBlue/60 transition-all group/item min-w-0"
+                    className="flex items-center gap-2 md:gap-3 p-2 md:p-3 rounded-xl bg-spidey-darkBlue/40 border border-spidey-red/10 hover:border-spidey-red/40 hover:bg-spidey-darkBlue/60 transition-all group/item min-w-0"
                     whileHover={{ x: 5 }}
                   >
-                    <skill.icon className={`text-2xl text-${category.color} group-hover/item:scale-110 transition-transform shrink-0`} />
-                    <span className="font-medium text-gray-300 group-hover/item:text-white transition-colors truncate text-sm">{skill.name}</span>
+                    <skill.icon className={`text-lg md:text-2xl text-${category.color} group-hover/item:scale-110 transition-transform shrink-0`} />
+                    <span className="font-medium text-gray-300 group-hover/item:text-white transition-colors truncate text-xs md:text-sm">{skill.name}</span>
                   </motion.div>
                 ))}
               </div>
@@ -154,9 +154,9 @@ const Skills = () => {
         >
           <div className="flex flex-wrap justify-center gap-6">
             {[SiDotnet, SiReact, SiPython, SiTypescript, SiDocker, SiGit, SiTensorflow, SiMongodb].map((Icon, i) => (
-              <motion.div
+                <motion.div
                 key={i}
-                className="w-16 h-16 rounded-2xl glass-red flex items-center justify-center text-3xl text-gray-400 hover:text-spidey-red transition-all"
+                className="w-10 h-10 md:w-16 md:h-16 rounded-xl md:rounded-2xl glass-red flex items-center justify-center text-xl md:text-3xl text-gray-400 hover:text-spidey-red transition-all"
                 whileHover={{ scale: 1.2, rotate: 360, boxShadow: '0 0 20px rgba(230, 57, 70, 0.5)' }}
                 initial={{ opacity: 0, scale: 0 }}
                 animate={inView ? { opacity: 1, scale: 1 } : {}}

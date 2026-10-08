@@ -23,7 +23,7 @@ const Contact = () => {
   ]
 
   return (
-    <section id="contact" className="py-20 px-6 relative overflow-hidden bg-[#0d0d0d]">
+    <section id="contact" className="py-12 md:py-20 px-4 md:px-6 relative overflow-hidden bg-[#0d0d0d]">
 
       <div className="absolute top-0 left-0 w-64 h-64 opacity-20">
         <svg viewBox="0 0 100 100" className="w-full h-full">
@@ -45,8 +45,8 @@ const Contact = () => {
           className="text-left mb-10"
         >
           <h2 className="font-bold text-4xl md:text-6xl mt-4 tracking-tighter uppercase">
-            <span className="text-spidey-light text-2xl md:text-4xl block mb-2 font-normal">[ GET IN ]</span>
-            <span className="gradient-text text-6xl md:text-8xl">TOUCH</span>
+            <span className="text-spidey-light text-lg md:text-4xl block mb-2 font-normal">[ GET IN ]</span>
+            <span className="gradient-text text-4xl md:text-8xl">TOUCH</span>
           </h2>
           
         </motion.div>
@@ -58,14 +58,14 @@ const Contact = () => {
               animate={inView ? { opacity: 1, x: 0 } : {}}
               transition={{ duration: 0.6, delay: 0.2 }}
             >
-              <h3 className="font-bold text-3xl mb-6 text-spidey-light tracking-tight uppercase">LET'S TEAM UP!</h3>
-              <p className="text-gray-400 mb-12 text-lg">
+              <h3 className="font-bold text-xl md:text-3xl mb-4 md:mb-6 text-spidey-light tracking-tight uppercase">LET'S TEAM UP!</h3>
+              <p className="text-gray-400 mb-8 md:mb-12 text-sm md:text-lg">
                 Whether you need help saving the city (building an app) or just want to 
                 chat about the latest tech, my spidey sense is always on! 
                 I'm currently available for new missions.
               </p>
 
-              <div className="space-y-8 mb-12">
+              <div className="space-y-6 md:space-y-8 mb-8 md:mb-12">
                 <motion.a
                   href="mailto:nawon2794@gmail.com"
                   onClick={handleCopyEmail}
@@ -84,7 +84,7 @@ const Contact = () => {
                       </motion.span>
                     )}
                   </p>
-                  <p className="text-white text-lg tracking-wide group-hover:text-spidey-red transition-colors">nawon2794@gmail.com</p>
+                  <p className="text-white text-sm md:text-lg tracking-wide group-hover:text-spidey-red transition-colors">nawon2794@gmail.com</p>
                 </motion.a>
 
                 <motion.div
@@ -92,7 +92,7 @@ const Contact = () => {
                   whileHover={{ x: 10 }}
                 >
                   <p className="text-xs text-gray-500 uppercase tracking-widest mb-1">SPIDER BASE</p>
-                  <p className="text-white text-lg tracking-wide leading-relaxed">
+                  <p className="text-white text-sm md:text-lg tracking-wide leading-relaxed">
                     71/8, "River View", Dodanwala Passage,<br/>
                     Asgiriya,<br/>
                     Kandy,<br/>
@@ -108,14 +108,14 @@ const Contact = () => {
                     href={social.href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="w-12 h-12 bg-[#a30b0b] hover:bg-[#c91212] rounded-md flex items-center justify-center text-white transition-colors"
+                    className="w-10 h-10 md:w-12 md:h-12 bg-[#a30b0b] hover:bg-[#c91212] rounded-md flex items-center justify-center text-white transition-colors"
                     whileHover={{ scale: 1.1 }}
                     initial={{ opacity: 0, y: 20 }}
                     animate={inView ? { opacity: 1, y: 0 } : {}}
                     transition={{ delay: 0.5 + i * 0.1 }}
                     aria-label={social.label}
                   >
-                    <social.icon className="text-2xl" />
+                    <social.icon className="text-xl md:text-2xl" />
                   </motion.a>
                 ))}
               </div>

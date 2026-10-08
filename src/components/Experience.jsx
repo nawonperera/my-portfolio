@@ -110,7 +110,7 @@ const Experience = () => {
   const spiderY = useTransform(smoothProgress, [0, 1], [0, containerHeight - 40])
 
   return (
-    <section id="experience" className="py-20 px-6 relative bg-[#0f0f0f] overflow-hidden">
+    <section id="experience" className="py-12 md:py-20 px-4 md:px-6 relative bg-[#0f0f0f] overflow-hidden">
       <div className="max-w-6xl mx-auto relative">
         {/* Header */}
         <motion.div
@@ -118,22 +118,22 @@ const Experience = () => {
           initial={{ opacity: 0, y: 50 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
-          className="text-center mb-24"
+          className="text-center mb-12 md:mb-24"
         >
           <h2 className="font-bold text-4xl md:text-6xl mt-4 tracking-tighter uppercase">
-            <span className="text-spidey-red text-xl md:text-2xl block mb-2 font-normal">[ PROFESSIONAL ]</span>
-            <span className="gradient-text text-6xl md:text-8xl">EXPERIENCE</span>
+            <span className="text-spidey-red text-base md:text-2xl block mb-2 font-normal">[ PROFESSIONAL ]</span>
+            <span className="gradient-text text-4xl md:text-8xl">EXPERIENCE</span>
           </h2>
         </motion.div>
 
         {/* Timeline Container */}
         <div className="relative w-full" ref={containerRef}>
           {/* Vertical Dotted Line */}
-          <div className="absolute left-6 md:left-12 top-0 bottom-0 border-l-[2px] border-dotted border-gray-600"></div>
+          <div className="absolute left-4 md:left-12 top-0 bottom-0 border-l-[2px] border-dotted border-gray-600"></div>
 
           {/* Scrolling Spider */}
           <motion.div 
-            className="absolute left-6 md:left-12 -translate-x-1/2 w-12 h-12 md:w-16 md:h-16 z-10 pointer-events-none"
+            className="absolute left-4 md:left-12 -translate-x-1/2 w-8 h-8 md:w-16 md:h-16 z-10 pointer-events-none"
             style={{ top: spiderY }}
           >
             <img src="/experience/experiance.png" alt="Spider" className="w-full h-full object-contain" />
@@ -148,26 +148,26 @@ const Experience = () => {
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true, margin: "-100px" }}
                 transition={{ duration: 0.6, delay: i * 0.1 }}
-                className="relative flex flex-col md:flex-row gap-6 md:gap-12 pl-16 md:pl-32 py-10 md:py-16 border-b border-white/10 last:border-0"
+                className="relative flex flex-col gap-3 md:gap-6 md:flex-row md:gap-12 pl-10 md:pl-32 py-6 md:py-16 border-b border-white/10 last:border-0"
               >
                 {/* Timeline Dot */}
-                <div className="absolute left-6 md:left-12 top-12 md:top-18 -translate-x-1/2 w-2 h-2 rounded-full bg-white z-0"></div>
+                <div className="absolute left-4 md:left-12 top-8 md:top-18 -translate-x-1/2 w-1.5 h-1.5 md:w-2 md:h-2 rounded-full bg-white z-0"></div>
                 
                 {/* Date */}
-                <div className="md:w-[25%] shrink-0 pt-1">
-                  <h3 className="text-white font-bold text-sm md:text-base">{exp.date}</h3>
+                <div className="md:w-[25%] shrink-0 pt-0 md:pt-1">
+                  <h3 className="text-white font-bold text-xs md:text-base">{exp.date}</h3>
                 </div>
 
                 {/* Company & Location */}
                 <div className="md:w-[25%] shrink-0">
-                  <h4 className="text-white font-bold text-2xl md:text-3xl mb-1">{exp.company}</h4>
-                  <p className="text-gray-400 text-sm md:text-base">{exp.location}</p>
+                  <h4 className="text-white font-bold text-lg md:text-3xl mb-0.5 md:mb-1">{exp.company}</h4>
+                  <p className="text-gray-400 text-xs md:text-base">{exp.location}</p>
                 </div>
 
                 {/* Title & Description */}
                 <div className="md:w-[50%]">
-                  <h4 className="text-white font-bold text-xl md:text-2xl mb-3">{exp.title}</h4>
-                  <ul className="text-gray-400 text-sm leading-relaxed list-disc list-outside ml-4 space-y-2">
+                  <h4 className="text-white font-bold text-base md:text-2xl mb-2 md:mb-3">{exp.title}</h4>
+                  <ul className="text-gray-400 text-xs md:text-sm leading-relaxed list-disc list-outside ml-4 space-y-1 md:space-y-2">
                     {exp.description.map((item, idx) => (
                       <li key={idx}>{item}</li>
                     ))}

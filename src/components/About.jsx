@@ -1,6 +1,6 @@
 import { motion, useMotionValue, useTransform, animate } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
-import { Suspense, useEffect, useState } from 'react'
+import { Suspense, useEffect, useState, useCallback } from 'react'
 import SpiderMan3D from './SpiderMan3D'
 
 const stats = [
@@ -43,6 +43,16 @@ const AnimatedNumber = ({ value, suffix = '', decimals = 0, inView }) => {
 const About = () => {
   const [ref, inView] = useInView({ threshold: 0.2, triggerOnce: true })
   const [statsRef, statsInView] = useInView({ threshold: 0.3, triggerOnce: true })
+  const [modelHeight, setModelHeight] = useState('350px')
+
+  useEffect(() => {
+    const updateSize = () => {
+      setModelHeight(window.innerWidth < 1024 ? '300px' : '450px')
+    }
+    updateSize()
+    window.addEventListener('resize', updateSize)
+    return () => window.removeEventListener('resize', updateSize)
+  }, [])
 
   return (
     <section id="about" className="py-20 relative overflow-hidden bg-[#0a0a0a]">
@@ -56,8 +66,8 @@ const About = () => {
           className="text-left mb-16"
         >
           <h2 className="font-black text-4xl md:text-6xl mt-4 tracking-tighter uppercase">
-            <span className="text-spidey-light text-2xl md:text-4xl block mb-2 font-normal">[ PROFESSIONAL ]</span>
-            <span className="gradient-text text-6xl md:text-8xl">BACKGROUND</span>
+            <span className="text-spidey-light text-lg md:text-4xl block mb-2 font-normal">[ PROFESSIONAL ]</span>
+            <span className="gradient-text text-4xl md:text-8xl">BACKGROUND</span>
           </h2>
         </motion.div>
 
@@ -67,7 +77,7 @@ const About = () => {
             animate={inView ? { opacity: 1, scale: 1 } : {}}
             transition={{ duration: 0.8, delay: 0.2 }}
             className="relative w-full overflow-hidden"
-            style={{ height: window.innerWidth < 1024 ? '350px' : '450px' }}
+            style={{ height: modelHeight }}
           >
             {/* 3D Spider-Man Component */}
             <Suspense fallback={
@@ -95,10 +105,10 @@ const About = () => {
             animate={inView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.6, delay: 0.3 }}
           >
-            <h3 className="font-bold text-3xl mb-6 text-spidey-light tracking-tight uppercase">
+            <h3 className="font-bold text-xl md:text-3xl mb-4 md:mb-6 text-spidey-light tracking-tight uppercase">
               Delivering robust & scalable software solutions
             </h3>
-            <div className="space-y-6 text-gray-400 mb-10 text-lg leading-relaxed border-l-[3px] border-gray-400/50 pl-6">
+            <div className="space-y-4 md:space-y-6 text-gray-400 mb-6 md:mb-10 text-sm md:text-lg leading-relaxed border-l-[3px] border-gray-400/50 pl-4 md:pl-6">
               <p>
                 I am a Software Engineer specializing in 
                 <span className="text-spidey-red font-bold"> .NET</span>, 
@@ -127,7 +137,7 @@ const About = () => {
         initial={{ opacity: 0, y: 30 }}
         animate={statsInView ? { opacity: 1, y: 0 } : {}}
         transition={{ duration: 0.8, delay: 0.4 }}
-        className="mt-24 relative w-full border-t border-b border-white/10 overflow-hidden bg-[#0a0a0a]"
+        className="mt-12 md:mt-24 relative w-full border-t border-b border-white/10 overflow-hidden bg-[#0a0a0a]"
       >
         <div
           className="absolute inset-0 opacity-40 mix-blend-screen"
@@ -138,9 +148,9 @@ const About = () => {
           }}
         />
 
-        <div className="relative z-10 p-10 lg:p-20 flex flex-col items-center">
+        <div className="relative z-10 p-6 md:p-10 lg:p-20 flex flex-col items-center">
           {/* Stats Grid */}
-          <div className="grid grid-cols-2 gap-x-10 md:gap-x-32 gap-y-16 text-center max-w-3xl w-full">
+          <div className="grid grid-cols-2 gap-x-6 md:gap-x-32 gap-y-10 md:gap-y-16 text-center max-w-3xl w-full">
             {stats.map((stat, i) => (
               <motion.div
                 key={i}
@@ -149,7 +159,7 @@ const About = () => {
                 animate={statsInView ? { opacity: 1, y: 0 } : {}}
                 transition={{ delay: 0.2 + i * 0.15 }}
               >
-                <div className="font-black text-6xl md:text-8xl mb-2 gradient-text drop-shadow-[0_0_15px_rgba(204,0,0,0.4)]">
+                <div className="font-black text-4xl md:text-8xl mb-1 md:mb-2 gradient-text drop-shadow-[0_0_15px_rgba(204,0,0,0.4)]">
                   <AnimatedNumber
                     value={stat.number}
                     suffix={stat.suffix}
@@ -157,10 +167,10 @@ const About = () => {
                     inView={statsInView}
                   />
                 </div>
-                <div className="text-white font-bold text-lg md:text-2xl uppercase tracking-widest mt-2">
+                <div className="text-white font-bold text-sm md:text-2xl uppercase tracking-widest mt-1 md:mt-2">
                   {stat.label}
                 </div>
-                <div className="text-gray-400 text-sm md:text-base mt-1">
+                <div className="text-gray-400 text-xs md:text-base mt-0.5 md:mt-1">
                   {stat.subtext}
                 </div>
               </motion.div>

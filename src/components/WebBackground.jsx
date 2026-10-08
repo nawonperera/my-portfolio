@@ -23,8 +23,9 @@ const WebBackground = () => {
     }
     window.addEventListener('mousemove', handleMouseMove)
 
+    const isMobile = window.innerWidth < 768 || ('ontouchstart' in window)
     const nodes = []
-    const nodeCount = 50
+    const nodeCount = isMobile ? 25 : 50
 
     for (let i = 0; i < nodeCount; i++) {
       nodes.push({

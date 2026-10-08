@@ -147,21 +147,24 @@ const filters = [
 ]
 
 // Comic panel sizes — creates asymmetric grid
+// On mobile (grid-cols-1) everything collapses to single col/row.
+// row-span-2 only at md+ so cards don't eat double height on phones.
 const panelLayouts = [
-  'col-span-2 row-span-2',  // Large featured
-  'col-span-1 row-span-1',  // Standard
-  'col-span-1 row-span-2',  // Tall
-  'col-span-1 row-span-1',  // Standard
-  'col-span-2 row-span-1',  // Wide
-  'col-span-1 row-span-1',  // Standard
-  'col-span-1 row-span-1',  // Standard
-  'col-span-1 row-span-1',  // Standard
-  'col-span-1 row-span-1',  // Standard
+  'md:col-span-2 md:row-span-2',  // Large featured
+  'col-span-1 row-span-1',         // Standard
+  'col-span-1 md:row-span-2',      // Tall
+  'col-span-1 row-span-1',         // Standard
+  'md:col-span-2 row-span-1',      // Wide
+  'col-span-1 row-span-1',         // Standard
+  'col-span-1 row-span-1',         // Standard
+  'col-span-1 row-span-1',         // Standard
+  'col-span-1 row-span-1',         // Standard
 ]
 
 const ComicProjectCard = ({ project, index, layout }) => {
   const [isHovered, setIsHovered] = useState(false)
   const [showAction, setShowAction] = useState(false)
+  const [isTouched, setIsTouched] = useState(false)
 
   const handleHover = useCallback(() => {
     setIsHovered(true)
@@ -169,6 +172,16 @@ const ComicProjectCard = ({ project, index, layout }) => {
     setTimeout(() => setShowAction(false), 800)
   }, [])
 
+  // On mobile, toggle card expansion on tap
+  const handleTap = useCallback(() => {
+    setIsTouched(prev => !prev)
+    if (!isTouched) {
+      setShowAction(true)
+      setTimeout(() => setShowAction(false), 800)
+    }
+  }, [isTouched])
+
+  const isExpanded = isHovered || isTouched
   const isLarge = layout.includes('col-span-2') || layout.includes('row-span-2')
 
   return (
@@ -180,10 +193,11 @@ const ComicProjectCard = ({ project, index, layout }) => {
       transition={{ duration: 0.5, delay: index * 0.08 }}
       className={`${layout} group relative`}
       onMouseEnter={handleHover}
-      onMouseLeave={() => setIsHovered(false)}
+      onMouseLeave={() => { setIsHovered(false); setIsTouched(false) }}
+      onClick={handleTap}
     >
       <motion.div 
-        className="relative w-full h-full min-h-[250px] overflow-hidden border-[3px] border-black bg-black"
+        className="relative w-full h-full min-h-[200px] md:min-h-[250px] overflow-hidden border-[3px] border-black bg-black"
         style={{
           clipPath: isLarge 
             ? 'polygon(0 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%)'
@@ -274,8 +288,8 @@ const ComicProjectCard = ({ project, index, layout }) => {
           <motion.div
             initial={false}
             animate={{ 
-              height: isHovered ? 'auto' : 0,
-              opacity: isHovered ? 1 : 0,
+              height: isExpanded ? 'auto' : 0,
+              opacity: isExpanded ? 1 : 0,
             }}
             transition={{ duration: 0.3 }}
             className="overflow-hidden"
@@ -344,7 +358,7 @@ const Projects = () => {
     : projects.filter(p => p.category === activeFilter)
 
   return (
-    <section id="projects" className="py-20 px-6 relative overflow-hidden bg-[#050505]">
+    <section id="projects" className="py-12 md:py-20 px-4 md:px-6 relative overflow-hidden bg-[#050505]">
       <div className="max-w-7xl mx-auto">
         <motion.div
           ref={ref}
@@ -361,8 +375,8 @@ const Projects = () => {
             POW!
           </motion.span>
           <h2 className="font-bold text-4xl md:text-6xl mt-4 tracking-tighter uppercase">
-            <span className="text-spidey-light text-2xl md:text-4xl block mb-2 font-normal">[ PROJECT ]</span>
-            <span className="gradient-text text-6xl md:text-8xl">PORTFOLIO</span>
+            <span className="text-spidey-light text-lg md:text-4xl block mb-2 font-normal">[ PROJECT ]</span>
+            <span className="gradient-text text-4xl md:text-8xl">PORTFOLIO</span>
           </h2>
           
         </motion.div>
@@ -377,7 +391,7 @@ const Projects = () => {
             <motion.button
               key={filter.key}
               onClick={() => setActiveFilter(filter.key)}
-              className={`px-6 py-3 rounded-full font-bold text-lg transition-all flex items-center gap-2 ${
+              className={`px-3 md:px-6 py-2 md:py-3 rounded-full font-bold text-sm md:text-lg transition-all flex items-center gap-1.5 md:gap-2 ${
                 activeFilter === filter.key
                   ? 'bg-gradient-to-r from-spidey-red to-spidey-darkRed text-white shadow-lg shadow-spidey-red/30'
                   : 'glass text-gray-400 hover:text-white hover:border-spidey-red'
@@ -395,7 +409,7 @@ const Projects = () => {
         <AnimatePresence mode="popLayout">
           <motion.div 
             layout 
-            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 auto-rows-[250px] gap-3"
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 auto-rows-[200px] md:auto-rows-[250px] gap-3"
           >
             {filteredProjects.map((project, i) => (
               <ComicProjectCard 
