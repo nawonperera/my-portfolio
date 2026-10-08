@@ -1,25 +1,25 @@
 import { useState } from 'react'
 import { motion } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
-import { FaEnvelope, FaMapMarkerAlt, FaGithub, FaLinkedin, FaWhatsapp } from 'react-icons/fa'
+import { FaEnvelope, FaMapMarkerAlt, FaGithub, FaLinkedin,FaInstagram } from 'react-icons/fa'
 import HoverReveal from './HoverReveal'
 
 const Contact = () => {
   const [ref, inView] = useInView({ threshold: 0.1, triggerOnce: true })
-  const [copied, setCopied] = useState(false)
+  const [copied, setCopied] = useState(null)
 
-  const handleCopyEmail = (e) => {
+  const handleCopyEmail = (e, email) => {
     e.preventDefault()
-    navigator.clipboard.writeText('nawon2794@gmail.com')
-    setCopied(true)
-    setTimeout(() => setCopied(false), 2000)
+    navigator.clipboard.writeText(email)
+    setCopied(email)
+    setTimeout(() => setCopied(null), 2000)
   }
 
 
   const socials = [
     { icon: FaGithub, href: 'https://github.com/nawonperera', label: 'GitHub' },
-    { icon: FaLinkedin, href: 'https://www.linkedin.com/in/nawonperera/', label: 'LinkedIn' },
-    { icon: FaWhatsapp, href: 'https://wa.me/message/yournumber', label: 'WhatsApp' },
+    { icon: FaLinkedin, href: 'https://www.linkedin.com/in/nawon-perera-1106a22aa/', label: 'LinkedIn' },
+    { icon: FaInstagram, href: 'https://www.instagram.com/nawonperera/', label: 'Instagram' },
   ]
 
   return (
@@ -65,40 +65,91 @@ const Contact = () => {
                 I'm currently available for new missions.
               </p>
 
-              <div className="space-y-6 md:space-y-8 mb-8 md:mb-12">
-                <motion.a
-                  href="mailto:nawon2794@gmail.com"
-                  onClick={handleCopyEmail}
-                  className="block group"
-                  whileHover={{ x: 10 }}
-                >
-                  <p className="text-xs text-gray-500 uppercase tracking-widest mb-1 flex items-center gap-2">
-                    WEB-MAIL
-                    {copied && (
-                      <motion.span 
-                        initial={{ opacity: 0, scale: 0.5 }}
-                        animate={{ opacity: 1, scale: 1 }}
-                        className="text-[10px] bg-green-500 text-white px-2 py-0.5 rounded-sm font-bold"
-                      >
-                        COPIED!
-                      </motion.span>
-                    )}
-                  </p>
-                  <p className="text-white text-sm md:text-lg tracking-wide group-hover:text-spidey-red transition-colors">nawon2794@gmail.com</p>
-                </motion.a>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8 md:mb-12">
+                <div className="space-y-6 md:space-y-8">
+                  <motion.div
+                    className="md:hidden w-56 sm:w-64 mx-auto rounded-xl overflow-hidden shadow-2xl border-2 border-[#e63946]/20 mb-8"
+                    initial={{ opacity: 0, scale: 0.95 }}
+                    animate={inView ? { opacity: 1, scale: 1 } : {}}
+                    transition={{ duration: 0.5, delay: 0.25 }}
+                  >
+                    <img 
+                      src="/HoverImg/Full Image.jpeg" 
+                      alt="Nawon Perera"
+                      className="w-full h-auto object-cover hover:scale-105 transition-transform duration-500"
+                    />
+                  </motion.div>
 
-                <motion.div
-                  className="block group"
-                  whileHover={{ x: 10 }}
-                >
-                  <p className="text-xs text-gray-500 uppercase tracking-widest mb-1">SPIDER BASE</p>
-                  <p className="text-white text-sm md:text-lg tracking-wide leading-relaxed">
-                    71/8, "River View", Dodanwala Passage,<br/>
-                    Asgiriya,<br/>
-                    Kandy,<br/>
-                    Sri Lanka.
-                  </p>
-                </motion.div>
+                  <motion.a
+                    href="mailto:nawon2794@gmail.com"
+                    onClick={(e) => handleCopyEmail(e, 'nawon2794@gmail.com')}
+                    className="block group"
+                    whileHover={{ x: 10 }}
+                  >
+                    <p className="text-xs text-gray-500 uppercase tracking-widest mb-1 flex items-center gap-2">
+                      WEB-MAIL (PRIMARY)
+                      {copied === 'nawon2794@gmail.com' && (
+                        <motion.span 
+                          initial={{ opacity: 0, scale: 0.5 }}
+                          animate={{ opacity: 1, scale: 1 }}
+                          className="text-[10px] bg-green-500 text-white px-2 py-0.5 rounded-sm font-bold"
+                        >
+                          COPIED!
+                        </motion.span>
+                      )}
+                    </p>
+                    <p className="text-white text-sm md:text-lg tracking-wide group-hover:text-spidey-red transition-colors">nawon2794@gmail.com</p>
+                  </motion.a>
+
+                  <motion.a
+                    href="mailto:nawon.d.perera@gmail.com"
+                    onClick={(e) => handleCopyEmail(e, 'nawon.d.perera@gmail.com')}
+                    className="block group"
+                    whileHover={{ x: 10 }}
+                  >
+                    <p className="text-xs text-gray-500 uppercase tracking-widest mb-1 flex items-center gap-2">
+                      WEB-MAIL (SECONDARY)
+                      {copied === 'nawon.d.perera@gmail.com' && (
+                        <motion.span 
+                          initial={{ opacity: 0, scale: 0.5 }}
+                          animate={{ opacity: 1, scale: 1 }}
+                          className="text-[10px] bg-green-500 text-white px-2 py-0.5 rounded-sm font-bold"
+                        >
+                          COPIED!
+                        </motion.span>
+                      )}
+                    </p>
+                    <p className="text-white text-sm md:text-lg tracking-wide group-hover:text-spidey-red transition-colors">nawon.d.perera@gmail.com</p>
+                  </motion.a>
+                </div>
+
+                <div className="space-y-6 md:space-y-8">
+                  <motion.div
+                    className="block group"
+                    whileHover={{ x: 10 }}
+                  >
+                    <p className="text-xs text-gray-500 uppercase tracking-widest mb-1">SPIDER BASE (KANDY)</p>
+                    <p className="text-white text-sm md:text-lg tracking-wide leading-relaxed">
+                      71/8, "River View", Dodanwala Passage,<br/>
+                      Asgiriya,<br/>
+                      Kandy,<br/>
+                      Sri Lanka.
+                    </p>
+                  </motion.div>
+
+                  <motion.div
+                    className="block group"
+                    whileHover={{ x: 10 }}
+                  >
+                    <p className="text-xs text-gray-500 uppercase tracking-widest mb-1">SPIDER BASE (COLOMBO)</p>
+                    <p className="text-white text-sm md:text-lg tracking-wide leading-relaxed">
+                      115/A, Robert Gunawardana Mawatha,<br/>
+                      Udayapura,<br/>
+                      Battaramulla,<br/>
+                      Sri Lanka.
+                    </p>
+                  </motion.div>
+                </div>
               </div>
 
               <div className="flex gap-4">

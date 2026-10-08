@@ -9,6 +9,7 @@ const navLinks = [
   { name: 'Projects', href: '#projects' },
   { name: 'Experience', href: '#experience' },
   { name: 'Contact', href: '#contact' },
+  { name: 'My AI Twin', href: 'https://twin-ai-portfolio.onrender.com/', highlight: true },
 ]
 
 const Navbar = () => {
@@ -20,7 +21,7 @@ const Navbar = () => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 50)
       
-      const sections = navLinks.map(link => link.href.slice(1))
+      const sections = navLinks.filter(link => link.href.startsWith('#')).map(link => link.href.slice(1))
       for (const section of sections.reverse()) {
         const el = document.getElementById(section)
         if (el && window.scrollY >= el.offsetTop - 200) {
@@ -65,10 +66,14 @@ const Navbar = () => {
               >
                 <a
                   href={link.href}
+                  target={link.highlight ? "_blank" : undefined}
+                  rel={link.highlight ? "noopener noreferrer" : undefined}
                   className={`py-2 text-base font-medium transition-colors ${
-                    activeSection === link.href.slice(1)
-                      ? 'text-white'
-                      : 'text-gray-400 hover:text-white'
+                    link.highlight
+                      ? 'text-[#c1121f] hover:text-[#9a0e19]'
+                      : activeSection === link.href.slice(1)
+                        ? 'text-white'
+                        : 'text-gray-400 hover:text-white'
                   }`}
                 >
                   {link.name}
@@ -136,7 +141,11 @@ const Navbar = () => {
                   >
                     <a
                       href={link.href}
-                      className="font-comic text-3xl text-spidey-light hover:text-spidey-red transition-colors"
+                      target={link.highlight ? "_blank" : undefined}
+                      rel={link.highlight ? "noopener noreferrer" : undefined}
+                      className={`font-comic text-3xl transition-colors ${
+                        link.highlight ? 'text-[#c1121f] hover:text-[#9a0e19]' : 'text-spidey-light hover:text-spidey-red'
+                      }`}
                       onClick={() => setMobileOpen(false)}
                     >
                       {link.name}
