@@ -15,7 +15,13 @@ html {
   width: 100%;
   height: 100%;
   overflow-x: hidden;
-  font-size: 15px; /* Slight zoom out across the entire app */
+  font-size: 14px; /* Mobile base */
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 15px; /* Slight zoom out on desktop */
+  }
 }
 
 body {
@@ -328,4 +334,31 @@ html.symbiote-mode .border-spidey-red {
 @keyframes spider-arcs-pulse {
   0%, 100% { opacity: 0.9; }
   50%       { opacity: 0.35; }
+}
+
+/* ── Mobile-specific styles ── */
+@media (max-width: 767px) {
+  /* Tighter section padding on mobile */
+  section {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  /* Ensure nothing overflows horizontally */
+  .max-w-7xl,
+  .max-w-6xl {
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+  }
+
+  /* Better tap targets for all interactive elements */
+  a, button {
+    min-height: 36px;
+    min-width: 36px;
+  }
+
+  /* Reduce heavy box-shadows on mobile for performance */
+  .glass, .glass-red {
+    backdrop-filter: blur(10px);
+  }
 }

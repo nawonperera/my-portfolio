@@ -1,6 +1,10 @@
 /** @type {import('tailwindcss').Config} */
 export default {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
+  safelist: [
+    'md:col-span-2',
+    'md:row-span-2',
+  ],
   theme: {
     extend: {
       colors: {
