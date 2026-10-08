@@ -38,7 +38,7 @@ const projects = [
     image: '/Projects/VILLA MANAGEMENT SYSTEM.jpeg',
     gradient: 'from-blue-500 to-indigo-700',
     tags: ['.NET Core', 'MVC', 'Entity Framework', 'SQL Server'],
-    category: 'fullstack',
+    category: ['fullstack', 'backend'],
     github: 'https://github.com/nawonperera/Villa_REST-API-Backend',
     live: '#',
     actionWord: 'WHAM!',
@@ -90,7 +90,7 @@ const projects = [
     image: '/Projects/microservices_portfolio_image.png',
     gradient: 'from-cyan-500 to-blue-800',
     tags: ['.NET 8', 'Angular', 'PostgreSQL', 'Docker', 'AKS'],
-    category: 'microservices',
+    category: ['microservices', 'devops', 'fullstack'],
     github: 'https://github.com/nawonperera/dotnet-ecommerce-microservices',
     live: '#',
     actionWord: 'BOOM!',
@@ -129,11 +129,25 @@ const projects = [
     image: '/Projects/genai_dotnet_portfolio.png',
     gradient: 'from-purple-500 to-fuchsia-700',
     tags: ['.NET', 'Generative AI', 'Ollama', 'RAG', 'Vector Search'],
-    category: 'ai_llm',
+    category: ['ai_llm', 'fullstack'],
     github: 'https://github.com/nawonperera/LLM_in_.NET',
     live: '#',
     actionWord: 'THWACK!',
   },
+  {
+  id: 11,
+  title: 'EShop Copilot',
+  villain: 'Manual Full Stack Boilerplate',
+  description: 'AI driven distributed e-commerce platform orchestrated with .NET Aspire and Blazor Server, featuring autonomous AI agent workflows, prompt engineering, and automated feature scaffolding with OpenTelemetry observability.',
+  image: '/Projects/eshop_copilot_portfolio.jpeg',
+  gradient: 'from-blue-600 to-indigo-800',
+  tags: ['.NET Aspire', 'Blazor', 'AI Agents', 'Minimal APIs', 'OpenTelemetry'],
+  category: ['ai_llm', 'fullstack'],
+  github: 'https://github.com/nawonperera/eshop-copilot',
+  live: '#',
+  actionWord: 'KAPOW!',
+},
+  
 ]
 
 const filters = [
@@ -146,19 +160,16 @@ const filters = [
   { key: 'devops', label: 'DevOps', icon: '🚀' },
 ]
 
-// Comic panel sizes — creates asymmetric grid
-// On mobile (grid-cols-1) everything collapses to single col/row.
-// row-span-2 only at md+ so cards don't eat double height on phones.
 const panelLayouts = [
-  'md:col-span-2 md:row-span-2',  // Large featured
-  'col-span-1 row-span-1',         // Standard
-  'col-span-1 md:row-span-2',      // Tall
-  'col-span-1 row-span-1',         // Standard
-  'md:col-span-2 row-span-1',      // Wide
-  'col-span-1 row-span-1',         // Standard
-  'col-span-1 row-span-1',         // Standard
-  'col-span-1 row-span-1',         // Standard
-  'col-span-1 row-span-1',         // Standard
+  'md:col-span-2 md:row-span-2',
+  'col-span-1 row-span-1',
+  'col-span-1 md:row-span-2',
+  'col-span-1 row-span-1',
+  'md:col-span-2 row-span-1',
+  'col-span-1 row-span-1',
+  'col-span-1 row-span-1',
+  'col-span-1 row-span-1',
+  'col-span-1 row-span-1',
 ]
 
 const ComicProjectCard = ({ project, index, layout }) => {
@@ -172,7 +183,6 @@ const ComicProjectCard = ({ project, index, layout }) => {
     setTimeout(() => setShowAction(false), 800)
   }, [])
 
-  // On mobile, toggle card expansion on tap
   const handleTap = useCallback(() => {
     setIsTouched(prev => !prev)
     if (!isTouched) {
@@ -210,7 +220,6 @@ const ComicProjectCard = ({ project, index, layout }) => {
         }}
         transition={{ duration: 0.3 }}
       >
-        {/* Background Image */}
         <div className={`absolute inset-0 bg-gradient-to-br ${project.gradient}`}>
           {project.image.startsWith('/') ? (
             <img 
@@ -234,7 +243,6 @@ const ComicProjectCard = ({ project, index, layout }) => {
             </div>
           )}
           
-          {/* Web pattern overlay */}
           {!project.image.startsWith('/') && (
             <div className="absolute inset-0 opacity-20">
               <svg width="100%" height="100%">
@@ -249,10 +257,8 @@ const ComicProjectCard = ({ project, index, layout }) => {
           )}
         </div>
 
-        {/* Dark gradient overlay */}
         <div className="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-transparent opacity-80 group-hover:opacity-90 transition-opacity duration-300" />
 
-        {/* Comic action word - appears on hover */}
         <AnimatePresence>
           {showAction && (
             <motion.div
@@ -278,13 +284,11 @@ const ComicProjectCard = ({ project, index, layout }) => {
 
         
 
-        {/* Content overlay */}
         <div className="absolute bottom-0 left-0 right-0 p-4 md:p-5 z-20">
           <h3 className={`font-black ${isLarge ? 'text-2xl md:text-3xl' : 'text-lg md:text-xl'} text-white uppercase tracking-tight mb-2 group-hover:text-spidey-red transition-colors leading-tight`}>
             {project.title}
           </h3>
           
-          {/* Description - speech bubble style on hover */}
           <motion.div
             initial={false}
             animate={{ 
@@ -298,7 +302,6 @@ const ComicProjectCard = ({ project, index, layout }) => {
               <p className="text-gray-200 text-xs md:text-sm leading-relaxed">
                 {project.description}
               </p>
-              {/* Speech bubble tail */}
               <div 
                 className="absolute -top-2 left-6 w-4 h-4 bg-white/10 border-l border-t border-white/20 backdrop-blur-md"
                 style={{ transform: 'rotate(45deg)' }}
@@ -306,7 +309,6 @@ const ComicProjectCard = ({ project, index, layout }) => {
             </div>
           </motion.div>
 
-          {/* Tags */}
           <div className="flex flex-wrap gap-1.5 mb-3">
             {project.tags.slice(0, isLarge ? 5 : 3).map((tag) => (
               <span
@@ -323,7 +325,6 @@ const ComicProjectCard = ({ project, index, layout }) => {
             )}
           </div>
 
-          {/* GitHub link */}
           <motion.a
             href={project.github}
             target="_blank"
@@ -337,7 +338,6 @@ const ComicProjectCard = ({ project, index, layout }) => {
           </motion.a>
         </div>
 
-        {/* Corner fold effect */}
         <div 
           className="absolute top-0 right-0 w-0 h-0 transition-all duration-300 group-hover:w-8 group-hover:h-8"
           style={{
@@ -355,7 +355,7 @@ const Projects = () => {
 
   const filteredProjects = activeFilter === 'all' 
     ? projects 
-    : projects.filter(p => p.category === activeFilter)
+    : projects.filter(p => Array.isArray(p.category) ? p.category.includes(activeFilter) : p.category === activeFilter)
 
   return (
     <section id="projects" className="py-12 md:py-20 px-4 md:px-6 relative overflow-hidden bg-[#050505]">
@@ -405,7 +405,6 @@ const Projects = () => {
           ))}
         </motion.div>
 
-        {/* Comic Panel Grid */}
         <AnimatePresence mode="popLayout">
           <motion.div 
             layout 
