@@ -8,9 +8,9 @@ const Hero = () => {
   const [viewportHeight, setViewportHeight] = useState('100vh')
 
   const { scrollY } = useScroll()
-  const emblemY = useTransform(scrollY, [0, 700], [0, 300]) 
+  const emblemY = useTransform(scrollY, [0, 700], [0, 280]) 
   const emblemX = useTransform(scrollY, [0, 700], [0, 300])
-  const emblemScale = useTransform(scrollY, [0, 730], [1, 1])
+  const emblemScale = useTransform(scrollY, [0, 650], [1, 1])
   
   const emblemFilter = useTransform(
     scrollY,
@@ -228,13 +228,13 @@ const Hero = () => {
         transition={{ duration: 0.8, delay: 0.5 }}
         className="absolute bottom-0 right-0 z-30 hidden md:block"
       >
-        <div className="relative w-[250px] lg:w-[350px] flex justify-center items-center">
+        <div className="relative w-[250px] lg:w-[330px] flex justify-center items-center">
           <img src="/Hero/Web.png" alt="Spider Web" className="w-full h-auto opacity-70" />
           
           <motion.div 
             animate={{ rotate: [0, 5, 0, -5, 0], y: [0, -5, 0] }}
             transition={{ duration: 4, repeat: Infinity }}
-            className="absolute top-[20%] right-[15%] px-4 py-2 rounded-full bg-gradient-to-r from-spidey-red to-spidey-gold text-white text-xs font-bold uppercase tracking-widest shadow-lg z-20 whitespace-nowrap"
+            className="absolute top-[30%] right-[15%] px-4 py-2 rounded-full bg-gradient-to-r from-spidey-red to-spidey-gold text-white text-xs font-bold uppercase tracking-widest shadow-lg z-20 whitespace-nowrap"
           >
             .NET HERO 🦸
           </motion.div>
@@ -242,7 +242,7 @@ const Hero = () => {
           <motion.div 
             animate={{ rotate: [0, -5, 0, 5, 0], y: [0, 5, 0] }}
             transition={{ duration: 4, repeat: Infinity, delay: 0.5 }}
-            className="absolute bottom-[35%] left-[5%] px-4 py-2 rounded-full bg-gradient-to-r from-spidey-blue to-spidey-lightBlue text-white text-xs font-bold uppercase tracking-widest shadow-lg z-20 whitespace-nowrap"
+            className="absolute bottom-[40%] left-[10%] px-4 py-2 rounded-full bg-gradient-to-r from-spidey-blue to-spidey-lightBlue text-white text-xs font-bold uppercase tracking-widest shadow-lg z-20 whitespace-nowrap"
           >
             AI SOLUTIONS 🧠
           </motion.div>
@@ -250,7 +250,7 @@ const Hero = () => {
           <motion.div 
             animate={{ rotate: [0, 4, 0, -4, 0], y: [0, -4, 0] }}
             transition={{ duration: 5, repeat: Infinity, delay: 1.2 }}
-            className="absolute top-[10%] left-[10%] px-4 py-2 rounded-full bg-gradient-to-r from-purple-500 to-indigo-500 text-white text-xs font-bold uppercase tracking-widest shadow-lg z-20 whitespace-nowrap"
+            className="absolute top-[15%] left-[10%] px-4 py-2 rounded-full bg-gradient-to-r from-purple-500 to-indigo-500 text-white text-xs font-bold uppercase tracking-widest shadow-lg z-20 whitespace-nowrap"
           >
             MICROSERVICES 🕸️
           </motion.div>
@@ -265,7 +265,7 @@ const Hero = () => {
           <motion.div 
             animate={{ rotate: [0, -6, 0, 6, 0], y: [0, 4, 0] }}
             transition={{ duration: 4.2, repeat: Infinity, delay: 0.2 }}
-            className="absolute top-[45%] left-[-5%] px-4 py-2 rounded-full bg-gradient-to-r from-orange-400 to-amber-600 text-white text-xs font-bold uppercase tracking-widest shadow-lg z-20 whitespace-nowrap"
+            className="absolute top-[5%] right-[5%] px-4 py-2 rounded-full bg-gradient-to-r from-orange-400 to-amber-600 text-white text-xs font-bold uppercase tracking-widest shadow-lg z-20 whitespace-nowrap"
           >
             AWS ☁️
           </motion.div>
@@ -273,7 +273,7 @@ const Hero = () => {
           <motion.div 
             animate={{ rotate: [0, 5, 0, -5, 0], y: [0, -3, 0] }}
             transition={{ duration: 4.8, repeat: Infinity, delay: 1.5 }}
-            className="absolute top-[60%] right-[-5%] px-4 py-2 rounded-full bg-gradient-to-r from-blue-500 to-cyan-400 text-white text-xs font-bold uppercase tracking-widest shadow-lg z-20 whitespace-nowrap"
+            className="absolute top-[60%] right-[5%] px-4 py-2 rounded-full bg-gradient-to-r from-blue-500 to-cyan-400 text-white text-xs font-bold uppercase tracking-widest shadow-lg z-20 whitespace-nowrap"
           >
             AZURE ☁️
           </motion.div>

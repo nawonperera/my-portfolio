@@ -52,7 +52,7 @@ const Navbar = () => {
           >
             <span className="font-black text-lg md:text-2xl italic tracking-wider">
               <span className="text-[#c1121f]">NAWON</span>
-              <span className="text-white">_DEV</span>
+              <span className="text-white">_D76</span>
             </span>
           </motion.a>
 
