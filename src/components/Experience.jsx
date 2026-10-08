@@ -8,10 +8,10 @@ const experiences = [
     title: 'Software Engineer (Contract)',
     company: 'Spherehead Technologies (Pvt) Ltd',
     location: 'Sri Lanka',
-    date: 'June 2026 - August 2026',
+    date: 'June 2026 - September 2026',
     description: [
       'Built a static company website using React, focusing on responsive UI and performance.',
-      'Developed a static site using Next.js, implementing modern routing and SEO-friendly structure.',
+      'Developed a static site using Next.js, implementing modern routing and SEO friendly structure.',
       'Contributed to a full-stack MERN project, working across MongoDB, Express, React, and Node.js.',
     ],
   },
@@ -22,9 +22,9 @@ const experiences = [
     location: 'Sri Lanka',
     date: 'September 2025 - May 2026',
     description: [
-      'Developed and maintained .NET applications, fixing bugs, writing unit tests, and following best practices while collaborating with senior developers and cross-functional teams.',
-      'Built a real-time kitchen display system using .NET MAUI to show live order updates for kitchen operations.',
-      'Contributed to multiple projects including POSPointe .NET and developed a self-service kiosk application using Flutter with PAX payment system integration.',
+      'Developed and maintained .NET applications, fixing bugs, writing unit tests, and following best practices while collaborating with senior developers and cross functional teams.',
+      'Built a real time kitchen display system using .NET MAUI to show live order updates for kitchen operations.',
+      'Contributed to multiple projects including POSPointe .NET and developed a self service kiosk application using Flutter with PAX payment system integration.',
     ],
   },
   {
@@ -48,7 +48,7 @@ const experiences = [
     date: 'September 2023 - March 2024',
     description: [
       'Built IoT based bottle counter with ESP32 for remote monitoring',
-      'Led De-stoner Machine Mounting Project, overseeing design and setup',
+      'Led Destoner Machine Mounting Project, overseeing design and setup',
       'Applied project management principles to technical implementations',
     ],
   },
@@ -60,7 +60,7 @@ const experiences = [
     date: 'Graduate',
     description: [
       'Specialized in engineering management and electronic systems',
-      'Developed bio-inspired prosthetic arm and brain-controlled wheelchair',
+      'Developed bio inspired prosthetic arm and thought(brain) controlled wheelchair',
       'Mastered the intersection of hardware and software engineering',
     ],
   },
@@ -71,8 +71,9 @@ const experiences = [
     location: 'Sri Lanka',
     date: 'Schooling',
     description: [
-      'Rich history of academic and extracurricular excellence',
-      'Foundation in analytical thinking and leadership',
+      'Strong foundation in academic and analytical thinking',
+      'Active participation in Rugby and Athletics',
+      'Developed teamwork, discipline, and leadership through sports',
     ],
   },
 ]

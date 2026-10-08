@@ -175,10 +175,9 @@ const Hero = () => {
           >
 
             <div className="border-l-[3px] border-gray-400 pl-5 mb-12">
-              <p className="text-gray-300 text-sm md:text-base leading-relaxed max-w-[280px]">
-                I architect <span className="text-spidey-red font-bold"> scalable industrial grade APIs</span> and
-                high performance web systems,
-                integrating <span className="text-spidey-red font-bold">intelligent AI workflows</span> to solve complex real world challenges.
+              <p className="text-gray-300 text-sm md:text-base leading-relaxed max-w-[320px]">
+                I architect <span className="text-spidey-red font-bold">scalable APIs</span> and <span className="text-spidey-red font-bold">high performance web systems</span>, 
+                combining <span className="text-spidey-red font-bold">cloud native architecture</span>, <span className="text-spidey-red font-bold">distributed systems</span>, and <span className="text-spidey-red font-bold">intelligent AI workflows</span> to solve complex real world problems.
               </p>
             </div>
 
@@ -210,7 +209,7 @@ const Hero = () => {
           <motion.div 
             animate={{ rotate: [0, 5, 0, -5, 0], y: [0, -5, 0] }}
             transition={{ duration: 4, repeat: Infinity }}
-            className="absolute top-[25%] right-[20%] px-4 py-2 rounded-full bg-gradient-to-r from-spidey-red to-spidey-gold text-white text-xs font-bold uppercase tracking-widest shadow-lg z-20"
+            className="absolute top-[20%] right-[15%] px-4 py-2 rounded-full bg-gradient-to-r from-spidey-red to-spidey-gold text-white text-xs font-bold uppercase tracking-widest shadow-lg z-20 whitespace-nowrap"
           >
             .NET HERO 🦸
           </motion.div>
@@ -218,9 +217,40 @@ const Hero = () => {
           <motion.div 
             animate={{ rotate: [0, -5, 0, 5, 0], y: [0, 5, 0] }}
             transition={{ duration: 4, repeat: Infinity, delay: 0.5 }}
-            className="absolute bottom-[25%] left-[5%] px-4 py-2 rounded-full bg-gradient-to-r from-spidey-blue to-spidey-lightBlue text-white text-xs font-bold uppercase tracking-widest shadow-lg z-20"
+            className="absolute bottom-[35%] left-[5%] px-4 py-2 rounded-full bg-gradient-to-r from-spidey-blue to-spidey-lightBlue text-white text-xs font-bold uppercase tracking-widest shadow-lg z-20 whitespace-nowrap"
           >
             AI SOLUTIONS 🧠
+          </motion.div>
+
+          <motion.div 
+            animate={{ rotate: [0, 4, 0, -4, 0], y: [0, -4, 0] }}
+            transition={{ duration: 5, repeat: Infinity, delay: 1.2 }}
+            className="absolute top-[10%] left-[10%] px-4 py-2 rounded-full bg-gradient-to-r from-purple-500 to-indigo-500 text-white text-xs font-bold uppercase tracking-widest shadow-lg z-20 whitespace-nowrap"
+          >
+            MICROSERVICES 🕸️
+          </motion.div>
+
+          <motion.div 
+            animate={{ rotate: [0, -4, 0, 4, 0], y: [0, 6, 0] }}
+            transition={{ duration: 4.5, repeat: Infinity, delay: 0.8 }}
+            className="absolute bottom-[15%] right-[20%] px-4 py-2 rounded-full bg-gradient-to-r from-teal-400 to-emerald-500 text-white text-xs font-bold uppercase tracking-widest shadow-lg z-20 whitespace-nowrap"
+          >
+            DEVOPS ⚙️
+          </motion.div>
+          <motion.div 
+            animate={{ rotate: [0, -6, 0, 6, 0], y: [0, 4, 0] }}
+            transition={{ duration: 4.2, repeat: Infinity, delay: 0.2 }}
+            className="absolute top-[45%] left-[-5%] px-4 py-2 rounded-full bg-gradient-to-r from-orange-400 to-amber-600 text-white text-xs font-bold uppercase tracking-widest shadow-lg z-20 whitespace-nowrap"
+          >
+            AWS ☁️
+          </motion.div>
+
+          <motion.div 
+            animate={{ rotate: [0, 5, 0, -5, 0], y: [0, -3, 0] }}
+            transition={{ duration: 4.8, repeat: Infinity, delay: 1.5 }}
+            className="absolute top-[60%] right-[-5%] px-4 py-2 rounded-full bg-gradient-to-r from-blue-500 to-cyan-400 text-white text-xs font-bold uppercase tracking-widest shadow-lg z-20 whitespace-nowrap"
+          >
+            AZURE ☁️
           </motion.div>
         </div>
       </motion.div>

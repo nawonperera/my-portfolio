@@ -5,56 +5,68 @@ import {
   SiDotnet, SiCsharp, SiReact, SiTypescript, SiJavascript,
   SiPython, SiTensorflow, SiPytorch, SiScikitlearn,
   SiPostgresql, SiMongodb, SiDocker, SiGit, SiNodedotjs,
-  SiTailwindcss, SiRedux
+  SiTailwindcss, SiRedux, SiRedis, SiRabbitmq, SiNextdotjs,
+  SiAngular, SiBlazor, SiOpenai, SiKubernetes,
+  SiMicrosoftazure, SiAmazonaws, SiGithubactions, SiGithub, SiOpentelemetry
 } from 'react-icons/si'
 
 const skillCategories = [
   {
-    title: 'Backend Development',
-    subtitle: '.NET & Server-side',
+    title: 'Backend Engineering',
+    subtitle: 'Scalable APIs & Distributed Systems',
     icon: '⚙️',
     color: 'spidey-red',
     skills: [
-      { name: 'C# / .NET Core', icon: SiCsharp },
-      { name: 'ASP.NET Core / .NET 9', icon: SiDotnet },
-      { name: 'Node.js & Express', icon: SiNodedotjs },
-      { name: 'SQL (PostgreSQL/MySQL)', icon: SiPostgresql },
+      { name: 'C# / .NET / ASP.NET Core', icon: SiCsharp },
+      { name: 'REST APIs / Minimal APIs', icon: SiDotnet },
+      { name: 'Node.js / Express', icon: SiNodedotjs },
+      { name: 'Microservices / API Gateway', icon: SiDocker },
+      { name: 'SQL Server / PostgreSQL', icon: SiPostgresql },
+      { name: 'MongoDB / Redis', icon: SiRedis },
+      { name: 'RabbitMQ / Messaging', icon: SiRabbitmq },
     ]
   },
   {
-    title: 'Frontend Development',
-    subtitle: 'Modern UI Frameworks',
+    title: 'Frontend Engineering',
+    subtitle: 'Modern Web Applications',
     icon: '💻',
     color: 'spidey-react',
     skills: [
-      { name: 'React', icon: SiReact },
+      { name: 'React / Next.js', icon: SiNextdotjs },
       { name: 'TypeScript / JavaScript', icon: SiTypescript },
-      { name: 'TailwindCSS / CSS3', icon: SiTailwindcss },
-      { name: 'Redux / Global State', icon: SiRedux },
+      { name: 'Angular', icon: SiAngular },
+      { name: 'Blazor', icon: SiBlazor },
+      { name: 'Tailwind CSS', icon: SiTailwindcss },
+      { name: 'Redux / State Management', icon: SiRedux },
     ]
   },
   {
-    title: 'AI & Machine Learning',
-    subtitle: 'Intelligent Solutions',
+    title: 'AI & Intelligent Systems',
+    subtitle: 'AI-Powered Software Engineering',
     icon: '🧠',
     color: 'spidey-gold',
     skills: [
-      { name: 'Python (AI Workflows)', icon: SiPython },
-      { name: 'Agentic AI / RAG', icon: SiPython },
-      { name: 'LangChain / LLMs', icon: SiPython },
-      { name: 'Machine Learning', icon: SiTensorflow },
+      { name: 'Python / AI Workflows', icon: SiPython },
+      { name: 'Agentic AI / AI Agents', icon: SiOpenai },
+      { name: 'LLMs / RAG', icon: SiTensorflow },
+      { name: 'Prompt Engineering', icon: SiOpenai },
+      { name: 'Machine Learning', icon: SiScikitlearn },
+      { name: 'AI-Assisted Development', icon: SiGithub },
     ]
   },
   {
-    title: 'Tools & DevOps',
-    subtitle: 'Practices & Infrastructure',
+    title: 'Cloud, DevOps & Infrastructure',
+    subtitle: 'Cloud-Native Engineering',
     icon: '🛠️',
     color: 'spidey-lightBlue',
     skills: [
-      { name: 'Git / GitHub', icon: SiGit },
-      { name: 'REST APIs & JWT', icon: SiDotnet },
-      { name: 'Docker / AKS', icon: SiDocker },
-      { name: 'MongoDB / NoSQL', icon: SiMongodb },
+      { name: 'Docker / Containers', icon: SiDocker },
+      { name: 'Kubernetes / Azure AKS', icon: SiKubernetes },
+      { name: 'Microsoft Azure', icon: SiMicrosoftazure },
+      { name: 'AWS', icon: SiAmazonaws },
+      { name: 'CI/CD Pipelines', icon: SiGithubactions },
+      { name: 'Git / GitHub', icon: SiGithub },
+      { name: 'OpenTelemetry / Observability', icon: SiOpentelemetry },
     ]
   },
 ]
@@ -97,7 +109,7 @@ const Skills = () => {
               key={category.title}
               initial={{ opacity: 0, y: 30 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.5, delay: catIndex * 0.1 }}
+              transition={{ duration: 0.4, delay: catIndex * 0.05 }}
               className="glass rounded-2xl p-6 border-2 border-transparent hover:border-spidey-red/50 transition-all group"
               whileHover={{ scale: 1.02 }}
             >
@@ -121,7 +133,7 @@ const Skills = () => {
                     key={skill.name}
                     initial={{ opacity: 0, x: -20 }}
                     animate={inView ? { opacity: 1, x: 0 } : {}}
-                    transition={{ delay: 0.3 + catIndex * 0.1 + skillIndex * 0.05 }}
+                    transition={{ duration: 0.3, delay: 0.1 + catIndex * 0.05 + skillIndex * 0.03 }}
                     className="flex items-center gap-3 p-3 rounded-xl bg-spidey-darkBlue/40 border border-spidey-red/10 hover:border-spidey-red/40 hover:bg-spidey-darkBlue/60 transition-all group/item min-w-0"
                     whileHover={{ x: 5 }}
                   >
@@ -137,7 +149,7 @@ const Skills = () => {
         <motion.div
           initial={{ opacity: 0 }}
           animate={inView ? { opacity: 1 } : {}}
-          transition={{ delay: 0.8 }}
+          transition={{ delay: 0.3 }}
           className="mt-16 relative"
         >
           <div className="flex flex-wrap justify-center gap-6">
@@ -148,7 +160,7 @@ const Skills = () => {
                 whileHover={{ scale: 1.2, rotate: 360, boxShadow: '0 0 20px rgba(230, 57, 70, 0.5)' }}
                 initial={{ opacity: 0, scale: 0 }}
                 animate={inView ? { opacity: 1, scale: 1 } : {}}
-                transition={{ delay: 1 + i * 0.05 }}
+                transition={{ delay: 0.4 + i * 0.05 }}
               >
                 <Icon />
               </motion.div>

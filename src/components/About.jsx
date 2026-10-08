@@ -100,22 +100,19 @@ const About = () => {
             </h3>
             <div className="space-y-6 text-gray-400 mb-10 text-lg leading-relaxed border-l-[3px] border-gray-400/50 pl-6">
               <p>
-                I am a dedicated Software Engineer with over 1.5 years of experience specializing in
-                <span className="text-spidey-red font-bold"> .NET Core</span>,
-                <span className="text-spidey-react font-bold drop-shadow-[0_0_10px_rgba(97,218,251,0.3)]"> React</span>, and
-                <span className="text-green-400 font-bold"> Python</span>.
-                I focus on architecting scalable APIs and intelligent, data-driven applications.
+                I am a Software Engineer specializing in 
+                <span className="text-spidey-red font-bold"> .NET</span>, 
+                <span className="text-spidey-react font-bold drop-shadow-[0_0_10px_rgba(97,218,251,0.3)]"> React/Next.js</span>, and 
+                <span className="text-green-400 font-bold"> Python</span>, 
+                with a strong focus on building <span className="font-bold text-gray-200">scalable APIs, high performance web applications, and intelligent data driven systems</span>.
               </p>
               <p>
-                My expertise lies in
-                <span className="text-spidey-gold font-semibold"> clean architecture</span>,
-                high-performance system optimization, and the integration of
-                <span className="text-spidey-lightBlue font-semibold"> Agentic AI</span> and
-                <span className="text-spidey-red font-semibold"> IoT</span> into complex web systems.
+                My expertise lies in <span className="font-bold text-gray-200">clean architecture, distributed systems, system performance optimization, and AI driven development</span>, 
+                with experience in integrating <span className="text-spidey-lightBlue font-bold">Agentic AI</span> and <span className="text-spidey-red font-bold">IoT technologies</span> into modern software solutions.
               </p>
               <p>
-                I am committed to building robust software solutions that solve real-world problems
-                with efficiency, scalability, and modern design patterns.
+                I enjoy engineering reliable systems that transform complex real world challenges into <span className="font-bold text-gray-200">efficient, scalable, and maintainable solutions</span>, 
+                using modern architectures, design patterns, and emerging technologies.
               </p>
             </div>
 
