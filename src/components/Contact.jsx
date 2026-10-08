@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { motion } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
 import { FaEnvelope, FaMapMarkerAlt, FaGithub, FaLinkedin, FaWhatsapp } from 'react-icons/fa'
+import HoverReveal from './HoverReveal'
 
 const Contact = () => {
   const [ref, inView] = useInView({ threshold: 0.1, triggerOnce: true })
@@ -121,14 +122,31 @@ const Contact = () => {
             </motion.div>
           </div>
           
-          {/* Right Side Graphics */}
-          <div className="hidden lg:block absolute right-[-100px] top-[-100px] w-[800px] h-[800px] pointer-events-none z-0">
-            <img src="/touch/web.png" alt="Spider Web Background" className="absolute inset-0 w-full h-full object-contain opacity-50" />
-            <img src="/touch/spiderman.png" alt="Spider-Man on Web" className="absolute right-0 top-1/2 -translate-y-1/2 w-[400px] object-contain drop-shadow-2xl" />
-          </div>
+          {/* Right Side — HoverReveal + SpiderMan graphic */}
+          <motion.div
+            className="hidden lg:flex flex-col items-center justify-center relative z-10 w-full max-w-sm"
+            initial={{ opacity: 0, x: 60 }}
+            animate={inView ? { opacity: 1, x: 0 } : {}}
+            transition={{ duration: 0.7, delay: 0.35 }}
+          >
+            {/* Web background stays behind */}
+            <img
+              src="/touch/web.png"
+              alt=""
+              aria-hidden="true"
+              className="absolute inset-0 w-full h-full object-contain opacity-20 pointer-events-none select-none"
+            />
+
+            {/* HoverReveal sits in front */}
+            <div className="relative z-10 w-full">
+              <HoverReveal />
+            </div>
+
+          </motion.div>
         </div>
       </div>
     </section>
+
   )
 }
 

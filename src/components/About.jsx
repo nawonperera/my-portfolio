@@ -100,21 +100,21 @@ const About = () => {
             </h3>
             <div className="space-y-6 text-gray-400 mb-10 text-lg leading-relaxed border-l-[3px] border-gray-400/50 pl-6">
               <p>
-                I am a dedicated Software Engineer with over 1.5 years of experience specializing in 
-                <span className="text-spidey-red font-bold"> .NET Core</span>, 
-                <span className="text-spidey-react font-bold drop-shadow-[0_0_10px_rgba(97,218,251,0.3)]"> React</span>, and 
-                <span className="text-green-400 font-bold"> Python</span>. 
+                I am a dedicated Software Engineer with over 1.5 years of experience specializing in
+                <span className="text-spidey-red font-bold"> .NET Core</span>,
+                <span className="text-spidey-react font-bold drop-shadow-[0_0_10px_rgba(97,218,251,0.3)]"> React</span>, and
+                <span className="text-green-400 font-bold"> Python</span>.
                 I focus on architecting scalable APIs and intelligent, data-driven applications.
               </p>
               <p>
-                My expertise lies in 
-                <span className="text-spidey-gold font-semibold"> clean architecture</span>, 
-                high-performance system optimization, and the integration of 
-                <span className="text-spidey-lightBlue font-semibold"> Agentic AI</span> and 
+                My expertise lies in
+                <span className="text-spidey-gold font-semibold"> clean architecture</span>,
+                high-performance system optimization, and the integration of
+                <span className="text-spidey-lightBlue font-semibold"> Agentic AI</span> and
                 <span className="text-spidey-red font-semibold"> IoT</span> into complex web systems.
               </p>
               <p>
-                I am committed to building robust software solutions that solve real-world problems 
+                I am committed to building robust software solutions that solve real-world problems
                 with efficiency, scalability, and modern design patterns.
               </p>
             </div>
@@ -125,52 +125,52 @@ const About = () => {
       </div>
 
       {/* Stats Section */}
-      <motion.div 
+      <motion.div
         ref={statsRef}
         initial={{ opacity: 0, y: 30 }}
         animate={statsInView ? { opacity: 1, y: 0 } : {}}
         transition={{ duration: 0.8, delay: 0.4 }}
         className="mt-24 relative w-full border-t border-b border-white/10 overflow-hidden bg-[#0a0a0a]"
       >
-          <div 
-            className="absolute inset-0 opacity-40 mix-blend-screen"
-            style={{ 
-              backgroundImage: "url('/About/web.png')", 
-              backgroundSize: 'cover', 
-              backgroundPosition: 'center' 
-            }}
-          />
-          
-          <div className="relative z-10 p-10 lg:p-20 flex flex-col items-center">
-            {/* Stats Grid */}
-            <div className="grid grid-cols-2 gap-x-10 md:gap-x-32 gap-y-16 text-center max-w-3xl w-full">
-              {stats.map((stat, i) => (
-                <motion.div 
-                  key={i} 
-                  className="flex flex-col items-center hover:scale-110 transition-transform duration-300"
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={statsInView ? { opacity: 1, y: 0 } : {}}
-                  transition={{ delay: 0.2 + i * 0.15 }}
-                >
-                  <div className="font-black text-6xl md:text-8xl mb-2 gradient-text drop-shadow-[0_0_15px_rgba(204,0,0,0.4)]">
-                    <AnimatedNumber 
-                      value={stat.number} 
-                      suffix={stat.suffix} 
-                      decimals={stat.decimals} 
-                      inView={statsInView} 
-                    />
-                  </div>
-                  <div className="text-white font-bold text-lg md:text-2xl uppercase tracking-widest mt-2">
-                    {stat.label}
-                  </div>
-                  <div className="text-gray-400 text-sm md:text-base mt-1">
-                    {stat.subtext}
-                  </div>
-                </motion.div>
-              ))}
-            </div>
+        <div
+          className="absolute inset-0 opacity-40 mix-blend-screen"
+          style={{
+            backgroundImage: "url('/About/web.png')",
+            backgroundSize: 'cover',
+            backgroundPosition: 'center'
+          }}
+        />
+
+        <div className="relative z-10 p-10 lg:p-20 flex flex-col items-center">
+          {/* Stats Grid */}
+          <div className="grid grid-cols-2 gap-x-10 md:gap-x-32 gap-y-16 text-center max-w-3xl w-full">
+            {stats.map((stat, i) => (
+              <motion.div
+                key={i}
+                className="flex flex-col items-center hover:scale-110 transition-transform duration-300"
+                initial={{ opacity: 0, y: 20 }}
+                animate={statsInView ? { opacity: 1, y: 0 } : {}}
+                transition={{ delay: 0.2 + i * 0.15 }}
+              >
+                <div className="font-black text-6xl md:text-8xl mb-2 gradient-text drop-shadow-[0_0_15px_rgba(204,0,0,0.4)]">
+                  <AnimatedNumber
+                    value={stat.number}
+                    suffix={stat.suffix}
+                    decimals={stat.decimals}
+                    inView={statsInView}
+                  />
+                </div>
+                <div className="text-white font-bold text-lg md:text-2xl uppercase tracking-widest mt-2">
+                  {stat.label}
+                </div>
+                <div className="text-gray-400 text-sm md:text-base mt-1">
+                  {stat.subtext}
+                </div>
+              </motion.div>
+            ))}
           </div>
-        </motion.div>
+        </div>
+      </motion.div>
     </section>
   )
 }

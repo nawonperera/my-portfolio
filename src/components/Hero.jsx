@@ -1,11 +1,29 @@
 import { useState, useEffect, useLayoutEffect } from 'react'
-import { motion } from 'framer-motion'
+import { motion, useScroll, useTransform } from 'framer-motion'
 import { TypeAnimation } from 'react-type-animation'
 
 const Hero = () => {
   const [spiderSense, setSpiderSense] = useState([])
   const [isReady, setIsReady] = useState(false)
   const [viewportHeight, setViewportHeight] = useState('100vh')
+
+  const { scrollY } = useScroll()
+  
+  // Animation transforms for the emblem
+  // Decrease Y translation to make it stop higher (near the blue circle), increase X to move it further right
+  const emblemY = useTransform(scrollY, [0, 700], [0, 300]) 
+  const emblemX = useTransform(scrollY, [0, 700], [0, 300])
+  const emblemScale = useTransform(scrollY, [0, 730], [1, 1]) // Keep at same size
+  
+  // Start with a dark semi-transparent tint and transition to bright neon red glow
+  const emblemFilter = useTransform(
+    scrollY,
+    [0, 600],
+    [
+      'brightness(0.2) drop-shadow(0px 0px 0px rgba(255,0,0,0))',
+      'brightness(1.5) contrast(1.5) drop-shadow(0px 0px 25px rgba(255, 0, 0, 1)) hue-rotate(345deg) saturate(500%)'
+    ]
+  )
 
   useLayoutEffect(() => {
     const updateHeight = () => {
@@ -75,7 +93,7 @@ const Hero = () => {
   return (
     <section
       id="home"
-      className="flex flex-col relative px-6 overflow-hidden"
+      className="flex flex-col relative px-6 overflow-x-clip z-40"
       style={{
         minHeight: viewportHeight,
         opacity: isReady ? 1 : 0.3,
@@ -102,7 +120,48 @@ const Hero = () => {
       </div>
 
       <div className="absolute inset-x-0 bottom-0 top-20 flex justify-center z-10 pointer-events-none">
-        <img src="/Hero/Hero.png" alt="Spider-Man" className="h-[90%] lg:h-[100%] object-contain object-bottom" />
+        <div className="relative h-[90%] lg:h-[100%] flex justify-center">
+          <img src="/Hero/Hero.png" alt="Spider-Man" className="h-full w-auto object-contain object-bottom" />
+          
+          {/* Static underlying emblem that stays on the chest */}
+          <div
+            className="absolute"
+            style={{
+              top: '82%', 
+              left: '50%',
+              filter: 'brightness(0.2)',
+              zIndex: 10
+            }}
+          >
+            <img 
+              src="/Hero/emblem.png" 
+              alt="Spider Emblem Base" 
+              className="w-16 md:w-24 lg:w-32 opacity-90"
+              style={{ transform: 'translate(-50%, -50%)' }}
+            />
+          </div>
+
+          {/* Animated emblem that moves on scroll */}
+          <motion.div
+            className="absolute"
+            style={{
+              top: '82%', 
+              left: '50%',
+              x: emblemX,
+              y: emblemY,
+              scale: emblemScale,
+              filter: emblemFilter,
+              zIndex: 20
+            }}
+          >
+            <img 
+              src="/Hero/emblem.png" 
+              alt="Spider Emblem" 
+              className="w-16 md:w-24 lg:w-32 opacity-90"
+              style={{ transform: 'translate(-50%, -50%)' }}
+            />
+          </motion.div>
+        </div>
       </div>
 
       <div className="flex-grow relative z-20 flex flex-col justify-end pb-16 lg:pb-32 max-w-7xl mx-auto w-full px-6 lg:px-10">
@@ -114,31 +173,12 @@ const Hero = () => {
             transition={{ duration: 0.8, delay: 0.3 }}
             className="w-full lg:w-1/3 flex flex-col items-start text-left relative top-24 lg:-ml-10 mb-4 lg:mb-10"
           >
-            <div className="text-xl md:text-2xl text-gray-200 mb-8 font-medium">
-              <span>Specializing in </span>
-              <TypeAnimation
-                sequence={[
-                  '.NET Ecosystem',
-                  2000,
-                  'React Frontend',
-                  2000,
-                  'AI Solutions',
-                  2000,
-                  'IoT Engineering',
-                  2000,
-                ]}
-                wrapper="span"
-                speed={50}
-                repeat={Infinity}
-                className="text-spidey-red font-bold italic drop-shadow-sm"
-              />
-            </div>
 
             <div className="border-l-[3px] border-gray-400 pl-5 mb-12">
               <p className="text-gray-300 text-sm md:text-base leading-relaxed max-w-[280px]">
-                I architect <span className="text-spidey-red font-bold"> scalable industrial-grade APIs</span> and
-                high-performance web systems,
-                integrating <span className="text-spidey-red font-bold">intelligent AI workflows</span> to solve complex real-world challenges.
+                I architect <span className="text-spidey-red font-bold"> scalable industrial grade APIs</span> and
+                high performance web systems,
+                integrating <span className="text-spidey-red font-bold">intelligent AI workflows</span> to solve complex real world challenges.
               </p>
             </div>
 

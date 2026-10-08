@@ -316,3 +316,16 @@ html.symbiote-mode .border-spidey-red {
 .web-line, .spider-sense, [data-no-transition] {
   transition: none !important;
 }
+
+/* ── HoverReveal: register --r as animatable CSS length ── */
+@property --r {
+  syntax: '<length>';
+  inherits: true;
+  initial-value: 0px;
+}
+
+/* ── HoverReveal: spider-sense arc pulse animation ── */
+@keyframes spider-arcs-pulse {
+  0%, 100% { opacity: 0.9; }
+  50%       { opacity: 0.35; }
+}
