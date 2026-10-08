@@ -17,7 +17,7 @@ const Footer = () => {
       </div>
 
       <div className="max-w-7xl mx-auto relative">
-        <div className="flex flex-col lg:flex-row items-center justify-between gap-6 lg:gap-4 text-[10px] text-gray-500 font-bold uppercase tracking-widest">
+        <div className="flex flex-col items-center justify-between gap-4 lg:gap-4 text-[8px] md:text-[10px] text-gray-500 font-bold uppercase tracking-widest lg:flex-row">
           <p className="flex items-center justify-center lg:justify-start flex-wrap gap-1">
             TCK @ NAWON PERERA
           </p>

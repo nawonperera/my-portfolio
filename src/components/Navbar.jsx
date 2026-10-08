@@ -43,13 +43,13 @@ const Navbar = () => {
           scrolled ? 'glass py-3' : 'py-3 md:py-5'
         }`}
       >
-        <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
+        <div className="max-w-7xl mx-auto px-4 md:px-6 flex items-center justify-between">
           <motion.a
             href="#home"
             className="flex items-center z-20"
             whileHover={{ scale: 1.05 }}
           >
-            <span className="font-black text-2xl italic tracking-wider">
+            <span className="font-black text-lg md:text-2xl italic tracking-wider">
               <span className="text-[#c1121f]">NAWON</span>
               <span className="text-white">_DEV</span>
             </span>
@@ -95,8 +95,9 @@ const Navbar = () => {
             </div>
 
           <button
-            className="md:hidden text-2xl text-spidey-red"
+            className="md:hidden text-2xl text-spidey-red p-2 -mr-2"
             onClick={() => setMobileOpen(!mobileOpen)}
+            aria-label="Toggle navigation menu"
           >
             {mobileOpen ? <HiX /> : <HiMenuAlt4 />}
           </button>
@@ -111,7 +112,7 @@ const Navbar = () => {
             animate={{ opacity: 1, x: 0 }}
             exit={{ opacity: 0, x: '100%' }}
             transition={{ type: 'tween' }}
-            className="fixed inset-0 z-40 md:hidden"
+            className="fixed inset-0 z-[60] md:hidden"
           >
             <div className="absolute inset-0 bg-spidey-darkBlue/95 backdrop-blur-xl">
               <div className="absolute inset-0 opacity-10">
