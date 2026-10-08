@@ -79,7 +79,6 @@ const About = () => {
             className="relative w-full overflow-hidden"
             style={{ height: modelHeight }}
           >
-            {/* 3D Spider-Man Component */}
             <Suspense fallback={
               <div className="w-full h-full flex items-center justify-center">
                 <div className="text-center">
@@ -131,7 +130,6 @@ const About = () => {
         </div>
       </div>
 
-      {/* Stats Section */}
       <motion.div
         ref={statsRef}
         initial={{ opacity: 0, y: 30 }}
@@ -149,7 +147,6 @@ const About = () => {
         />
 
         <div className="relative z-10 p-6 md:p-10 lg:p-20 flex flex-col items-center">
-          {/* Stats Grid */}
           <div className="grid grid-cols-2 gap-x-6 md:gap-x-32 gap-y-10 md:gap-y-16 text-center max-w-3xl w-full">
             {stats.map((stat, i) => (
               <motion.div

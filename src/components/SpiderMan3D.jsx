@@ -260,7 +260,6 @@ const SpiderMan3D = () => {
   )
 }
 
-// Preload model
 useGLTF.preload('/models/spiderman.glb')
 
 export default SpiderMan3D

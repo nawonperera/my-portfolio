@@ -76,7 +76,6 @@ body {
   letter-spacing: 2px;
 }
 
-/* Gradient text */
 .gradient-text {
   background: linear-gradient(135deg, #e63946, #f4a261, #e63946);
   background-size: 200% 200%;
@@ -126,7 +125,6 @@ body {
   background-size: 60px 60px, 30px 30px, 30px 30px;
 }
 
-/* Spider cursor - simple */
 .web-cursor {
   position: fixed;
   pointer-events: none;
@@ -142,7 +140,6 @@ body {
   transform-origin: left center;
 }
 
-/* Spider sense ripple */
 @keyframes spider-sense {
   0% {
     transform: scale(1);
@@ -174,7 +171,6 @@ body {
     -1px 1px 0 #1d3557;
 }
 
-/* Swing animation */
 @keyframes swing {
   0%, 100% { transform: rotate(-5deg); }
   50% { transform: rotate(5deg); }
@@ -217,7 +213,6 @@ body {
   animation: eye-glow 2s ease-in-out infinite;
 }
 
-/* Pulse animations for floating button */
 @keyframes pulse-blue {
   0%, 100% { 
     box-shadow: 0 0 20px rgba(29, 53, 87, 0.6);

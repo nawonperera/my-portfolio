@@ -8,14 +8,11 @@ const ScrollProgressBar = () => {
     restDelta: 0.001,
   })
 
-  // Convert 0-1 to percentage string for left positioning
   const leftPercent = useTransform(smoothProgress, [0, 1], ['0%', '100%'])
 
   return (
     <div className="fixed top-0 left-0 right-0 z-[100]">
-      {/* Thin track */}
       <div className="h-[3px] w-full bg-white/5 relative">
-        {/* Gradient fill */}
         <motion.div
           className="h-full origin-left"
           style={{
@@ -27,7 +24,6 @@ const ScrollProgressBar = () => {
         />
       </div>
       
-      {/* Spider indicator following progress */}
       <motion.div
         className="absolute top-[-5px] pointer-events-none"
         style={{
@@ -42,7 +38,6 @@ const ScrollProgressBar = () => {
         </span>
       </motion.div>
       
-      {/* Glow effect at tip */}
       <motion.div
         className="absolute top-0 h-[3px] w-8 pointer-events-none blur-sm"
         style={{

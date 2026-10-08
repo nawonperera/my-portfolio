@@ -1,13 +1,5 @@
 import { useRef, useEffect, useState, useCallback } from 'react'
 
-/**
- * HoverReveal — CSS mask spotlight reveal effect.
- * Uses @property --r (registered in index.css) so the spotlight
- * radius can grow/shrink with a smooth CSS transition — zero JS animation loop.
- *
- * Built with Tailwind CSS classes.
- */
-
 const MODES = [
   { key: 'spotlight', label: 'Spotlight', icon: '🔦' },
   { key: 'wipe', label: 'Wipe', icon: '✂️' },
@@ -24,7 +16,6 @@ export default function HoverReveal() {
 
   const brushRadius = hovered ? BRUSH_SIZES[brushIdx] : 0
 
-  /* ── Pointer / touch tracking ──────────────────────────────── */
   const updateXY = useCallback((clientX, clientY) => {
     const stage = stageRef.current
     if (!stage) return
@@ -72,13 +63,11 @@ export default function HoverReveal() {
     }
   }, [mode, updateXY])
 
-  /* ── Sync brush radius to CSS var ─────────────────────────── */
   useEffect(() => {
     const stage = stageRef.current
     if (stage) stage.style.setProperty('--r', `${brushRadius}px`)
   }, [brushRadius])
 
-  /* ── Compute the mask for the alter layer ──────────────────── */
   const getMask = () => {
     if (mode === 'spotlight') return `radial-gradient(circle var(--r) at var(--x) var(--y), #000 62%, transparent 100%)`
     if (mode === 'wipe') return `linear-gradient(to right, #000 var(--x), transparent var(--x))`
@@ -89,8 +78,6 @@ export default function HoverReveal() {
 
   return (
     <div className="relative w-full max-w-sm mx-auto select-none">
-
-      {/* ── Spider-sense arc doodles ───────────────────────────── */}
       <svg
         viewBox="0 0 520 480"
         fill="none"
@@ -111,7 +98,6 @@ export default function HoverReveal() {
         <path d="M50 440 Q100 360 175 300" strokeWidth="1" strokeLinecap="round" style={{ stroke: '#f4a261' }} />
       </svg>
 
-      {/* ── "Hover to reveal" hint pill ────────────────────────── */}
       <div className={[
         'absolute top-4 left-1/2 -translate-x-1/2 z-20 pointer-events-none',
         'flex items-center gap-1.5 px-4 py-1.5 rounded-full',
@@ -124,7 +110,6 @@ export default function HoverReveal() {
         hover to reveal
       </div>
 
-      {/* ── Stage: two stacked images ──────────────────────────── */}
       <div
         ref={stageRef}
         className="relative w-full overflow-hidden rounded-2xl cursor-crosshair"
@@ -136,7 +121,6 @@ export default function HoverReveal() {
           boxShadow: '0 0 0 1px rgba(230,57,70,0.25), 0 24px 60px rgba(0,0,0,0.6), 0 0 80px rgba(230,57,70,0.08)',
         }}
       >
-        {/* Layer 1 — base (desaturated / dark) */}
         <img
           src="/HoverImg/Masked Me.jpg"
           alt="Nawon Perera"
@@ -145,7 +129,6 @@ export default function HoverReveal() {
           style={{ zIndex: 1 }}
         />
 
-        {/* Layer 2 — alter (full colour, revealed by mask) */}
         <img
           src="/HoverImg/Full Image.jpeg"
           alt="Nawon Perera — professional"
@@ -160,7 +143,6 @@ export default function HoverReveal() {
           }}
         />
 
-        {/* Label: alter */}
         <span
           className={[
             'absolute bottom-4 right-4 z-[5] text-[0.65rem] font-bold tracking-widest uppercase',

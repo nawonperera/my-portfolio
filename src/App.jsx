@@ -79,16 +79,9 @@ function App() {
               transition={{ duration: 0.5 }}
               onClick={('ontouchstart' in window) ? undefined : handleWebShoot}
             >
-              {/* Interactive particle web background */}
               <WebBackground />
-              
-              {/* Scroll progress bar with spider */}
               <ScrollProgressBar />
-              
-              {/* Custom spider cursor */}
               <SpiderCursor />
-              
-              {/* Easter eggs system */}
               <EasterEggs />
               
               <Navbar />

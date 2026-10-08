@@ -8,14 +8,10 @@ const Hero = () => {
   const [viewportHeight, setViewportHeight] = useState('100vh')
 
   const { scrollY } = useScroll()
-  
-  // Animation transforms for the emblem
-  // Decrease Y translation to make it stop higher (near the blue circle), increase X to move it further right
   const emblemY = useTransform(scrollY, [0, 700], [0, 300]) 
   const emblemX = useTransform(scrollY, [0, 700], [0, 300])
-  const emblemScale = useTransform(scrollY, [0, 730], [1, 1]) // Keep at same size
+  const emblemScale = useTransform(scrollY, [0, 730], [1, 1])
   
-  // Start with a dark semi-transparent tint and transition to bright neon red glow
   const emblemFilter = useTransform(
     scrollY,
     [0, 600],
@@ -141,7 +137,6 @@ const Hero = () => {
             />
           </div>
 
-          {/* Animated emblem that moves on scroll */}
           <motion.div
             className="absolute hidden md:block"
             style={{
@@ -201,7 +196,6 @@ const Hero = () => {
         </div>
       </div>
 
-      {/* Mobile-only: description + button below Spider-Man */}
       <motion.div
         initial={{ opacity: 0, y: 30 }}
         animate={{ opacity: 1, y: 0 }}

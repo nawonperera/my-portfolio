@@ -18,7 +18,6 @@ const SpiderCursor = () => {
     
     if (isMobile.current) return
 
-    // Hide default cursor
     document.body.style.cursor = 'none'
 
     const handleMouseMove = (e) => {
@@ -27,7 +26,6 @@ const SpiderCursor = () => {
 
     const handleMouseDown = (e) => {
       setIsClicking(true)
-      // Create a web ripple on click
       const id = Date.now()
       setRipples(prev => [...prev, { id, x: e.clientX, y: e.clientY }])
       setTimeout(() => {
@@ -48,9 +46,7 @@ const SpiderCursor = () => {
       setIsHovering(false)
     }
 
-    // Smooth animation loop
     const animate = () => {
-      // Smooth follow for outer ring (trail)
       const dx = mousePos.current.x - trailPos.current.x
       const dy = mousePos.current.y - trailPos.current.y
       trailPos.current.x += dx * 0.15
@@ -74,7 +70,6 @@ const SpiderCursor = () => {
 
     rafId.current = requestAnimationFrame(animate)
 
-    // Add cursor:none to all interactive elements  
     const style = document.createElement('style')
     style.id = 'spider-cursor-style'
     style.textContent = `
@@ -99,7 +94,6 @@ const SpiderCursor = () => {
 
   return (
     <>
-      {/* Inner cursor - spider dot */}
       <div
         ref={cursorRef}
         className="fixed top-0 left-0 pointer-events-none z-[9999] will-change-transform"
@@ -124,7 +118,6 @@ const SpiderCursor = () => {
         />
       </div>
 
-      {/* Outer trail ring */}
       <div
         ref={trailRef}
         className="fixed top-0 left-0 pointer-events-none z-[9998] will-change-transform"
@@ -145,7 +138,6 @@ const SpiderCursor = () => {
         />
       </div>
 
-      {/* Click ripples */}
       <AnimatePresence>
         {ripples.map(ripple => (
           <motion.div
@@ -161,7 +153,6 @@ const SpiderCursor = () => {
             exit={{ opacity: 0 }}
             transition={{ duration: 0.6, ease: 'easeOut' }}
           >
-            {/* Web burst pattern */}
             <svg width="60" height="60" viewBox="0 0 60 60">
               {[...Array(8)].map((_, i) => (
                 <motion.line

@@ -7,7 +7,6 @@ const EasterEggs = () => {
   const [clickCount, setClickCount] = useState(0)
   const [clickTimer, setClickTimer] = useState(null)
 
-  // Konami Code: ↑↑↓↓←→←→BA
   useEffect(() => {
     const konamiCode = [
       'ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown',
@@ -28,14 +27,10 @@ const EasterEggs = () => {
       }
     }
 
-    window.addEventListener('keydown', handleKeyDown)
-    return () => window.removeEventListener('keydown', handleKeyDown)
   }, [])
 
-  // Logo click counter for symbiote mode
   useEffect(() => {
     const handleLogoClick = (e) => {
-      // Check if clicked element is inside the navbar logo
       const logo = e.target.closest('a[href="#home"]')
       if (!logo || !logo.closest('nav')) return
 
@@ -48,7 +43,6 @@ const EasterEggs = () => {
         return newCount
       })
 
-      // Reset counter after 2 seconds of no clicks
       if (clickTimer) clearTimeout(clickTimer)
       const timer = setTimeout(() => setClickCount(0), 2000)
       setClickTimer(timer)
@@ -64,7 +58,6 @@ const EasterEggs = () => {
   const triggerKonami = useCallback(() => {
     setKonamiTriggered(true)
     
-    // Vibrate on mobile if supported
     if (navigator.vibrate) {
       navigator.vibrate([100, 50, 100, 50, 200])
     }
@@ -86,7 +79,6 @@ const EasterEggs = () => {
 
   return (
     <>
-      {/* Konami Code Animation - Spider-Man Landing */}
       <AnimatePresence>
         {konamiTriggered && (
           <motion.div
@@ -95,7 +87,6 @@ const EasterEggs = () => {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
           >
-            {/* Dramatic radial flash */}
             <motion.div
               className="absolute inset-0"
               initial={{ opacity: 0 }}
@@ -106,7 +97,6 @@ const EasterEggs = () => {
               }}
             />
 
-            {/* Spider-Man dropping from top */}
             <motion.div
               className="relative"
               initial={{ y: '-100vh', rotate: 0 }}
@@ -120,7 +110,6 @@ const EasterEggs = () => {
                 ease: 'easeOut',
               }}
             >
-              {/* Web line from top */}
               <motion.div
                 className="absolute left-1/2 -translate-x-1/2 w-[2px] bg-gradient-to-b from-white/80 to-transparent"
                 style={{ top: '-100vh', height: '100vh' }}
@@ -129,7 +118,6 @@ const EasterEggs = () => {
                 transition={{ duration: 0.4 }}
               />
               
-              {/* Impact ring */}
               <motion.div
                 className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
                 initial={{ scale: 0, opacity: 1 }}
@@ -139,7 +127,6 @@ const EasterEggs = () => {
                 <div className="w-40 h-40 rounded-full border-4 border-spidey-red" />
               </motion.div>
 
-              {/* Action text */}
               <motion.div
                 className="text-center"
                 initial={{ scale: 0 }}
@@ -165,7 +152,6 @@ const EasterEggs = () => {
               </motion.div>
             </motion.div>
 
-            {/* Web burst lines */}
             {[...Array(12)].map((_, i) => (
               <motion.div
                 key={i}
@@ -186,7 +172,6 @@ const EasterEggs = () => {
         )}
       </AnimatePresence>
 
-      {/* Symbiote mode indicator */}
       <AnimatePresence>
         {symbioteMode && (
           <motion.div

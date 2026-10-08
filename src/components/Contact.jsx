@@ -122,14 +122,12 @@ const Contact = () => {
             </motion.div>
           </div>
           
-          {/* Right Side — HoverReveal + SpiderMan graphic */}
           <motion.div
             className="hidden lg:flex flex-col items-center justify-center relative z-10 w-full max-w-sm"
             initial={{ opacity: 0, x: 60 }}
             animate={inView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.7, delay: 0.35 }}
           >
-            {/* Web background stays behind */}
             <img
               src="/touch/web.png"
               alt=""
@@ -137,7 +135,6 @@ const Contact = () => {
               className="absolute inset-0 w-full h-full object-contain opacity-20 pointer-events-none select-none"
             />
 
-            {/* HoverReveal sits in front */}
             <div className="relative z-10 w-full">
               <HoverReveal />
             </div>
