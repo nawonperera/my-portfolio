@@ -19,7 +19,7 @@ const Footer = () => {
       <div className="max-w-7xl mx-auto relative">
         <div className="flex flex-col lg:flex-row items-center justify-between gap-6 lg:gap-4 text-[10px] text-gray-500 font-bold uppercase tracking-widest">
           <p className="flex items-center justify-center lg:justify-start flex-wrap gap-1">
-            2026 @ NAWON PERERA | BUILT WITH <FaHeart className="text-spidey-red mx-1" /> AND REACT + .NET
+            TCK @ NAWON PERERA
           </p>
 
           <motion.p

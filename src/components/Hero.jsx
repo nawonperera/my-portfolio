@@ -184,6 +184,10 @@ const Hero = () => {
             <div className="flex flex-wrap gap-4 mb-2">
               <motion.a
                 href="#contact"
+                onClick={(e) => {
+                  e.preventDefault();
+                  document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
+                }}
                 className="bg-[#c1121f] hover:bg-[#9a0e19] text-white px-8 py-3 font-bold text-sm uppercase tracking-wider transition-colors"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}

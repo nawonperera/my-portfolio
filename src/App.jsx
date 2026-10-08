@@ -14,7 +14,7 @@ import SpiderCursor from './components/SpiderCursor'
 import ScrollProgressBar from './components/ScrollProgress'
 import WebBackground from './components/WebBackground'
 import EasterEggs from './components/EasterEggs'
-import SoundToggle, { SoundProvider } from './components/SoundManager'
+
 
 function App() {
   const [loading, setLoading] = useState(true)
@@ -51,8 +51,7 @@ function App() {
   }
 
   return (
-    <SoundProvider>
-      <div className="web-pattern">
+    <div className="web-pattern">
         {webLines.map(line => (
           <motion.div
             key={line.id}
@@ -101,14 +100,10 @@ function App() {
               <Contact />
               <Footer />
 
-              
-              {/* Sound toggle */}
-              <SoundToggle />
             </motion.main>
           )}
         </AnimatePresence>
-      </div>
-    </SoundProvider>
+    </div>
   )
 }
 

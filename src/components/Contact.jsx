@@ -61,7 +61,7 @@ const Contact = () => {
               <h3 className="font-bold text-3xl mb-6 text-spidey-light tracking-tight uppercase">LET'S TEAM UP!</h3>
               <p className="text-gray-400 mb-12 text-lg">
                 Whether you need help saving the city (building an app) or just want to 
-                chat about the latest tech, my spider-sense is always on! 
+                chat about the latest tech, my spidey sense is always on! 
                 I'm currently available for new missions.
               </p>
 
