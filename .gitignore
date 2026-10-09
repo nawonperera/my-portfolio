@@ -28,5 +28,4 @@ dist-ssr
 .env.*
 !.env.example
 
-# Test Coverage
 coverage/
