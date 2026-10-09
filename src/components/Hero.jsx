@@ -110,9 +110,9 @@ const Hero = () => {
 
 
 
-      <div className="absolute inset-0 flex flex-col items-center justify-start pt-20 md:pt-0 md:flex-row md:items-center md:justify-between px-4 lg:px-28 z-0 opacity-100 pointer-events-none md:-mt-48">
-        <span className="text-[18vw] md:text-[9vw] font-black text-white tracking-tighter leading-[0.85] md:leading-none z-0">NAWON</span>
-        <span className="text-[18vw] md:text-[9vw] font-black text-white tracking-tighter leading-[0.85] md:leading-none z-0">PERERA</span>
+      <div className="absolute inset-0 flex flex-col items-center justify-start pt-20 md:pt-0 md:flex-row md:items-center md:justify-between px-4 lg:px-28 z-20 md:z-0 opacity-100 pointer-events-none md:-mt-48">
+        <span className="text-[18vw] md:text-[9vw] font-black text-white tracking-tighter leading-[0.85] md:leading-none">NAWON</span>
+        <span className="text-[18vw] md:text-[9vw] font-black text-white tracking-tighter leading-[0.85] md:leading-none">PERERA</span>
       </div>
 
       <div className="absolute inset-x-0 bottom-0 top-20 flex justify-center z-10 pointer-events-none">
